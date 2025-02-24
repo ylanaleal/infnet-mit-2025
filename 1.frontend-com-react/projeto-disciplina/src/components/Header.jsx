@@ -1,15 +1,16 @@
-import React from 'react';
-import logo from '../assets/images/villa-pet-logo.png';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
   Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
 } from 'reactstrap';
+
+import logo from '../assets/images/villa-pet-logo.png';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,27 +19,43 @@ const Header = () => {
 
   return (
     <>
-      <Navbar color="dark" dark expand="md">
+      <Navbar style={{ backgroundColor: '#A3B7A9' }} dark expand="md">
         <NavbarBrand>
-          <img src={logo} width="50px;" style={{ paddingRight: '5px' }} />
-          MIT Full Stack 2025
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              color: 'black',
+              fontFamily: 'monospace',
+              fontWeight: 'bold',
+              fontSize: '1.5rem',
+            }}
+          >
+            {' '}
+            <img
+              src={logo}
+              width="50px;"
+              style={{ paddingRight: '5px', marginRight: '5px' }}
+            />
+            Villa Pet Hotel
+          </div>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ms-auto" navbar>
             <NavItem>
-              <NavLink tag={Link} to="/">
+              <NavLink tag={Link} to="/" style={{ color: 'black' }}>
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/users">
-                Users
+              <NavLink tag={Link} to="/sobre" style={{ color: 'black' }}>
+                Sobre
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/feedback">
-                Feedback
+              <NavLink tag={Link} to="/contato" style={{ color: 'black' }}>
+                Contato
               </NavLink>
             </NavItem>
           </Nav>
@@ -47,16 +64,5 @@ const Header = () => {
     </>
   );
 };
-
-// return (
-//   <>
-//     <div style={{ display: 'flex', alignItems: 'center' }}>
-//       <a href="/">
-//         <img src={logo} width="50px;" style={{ paddingRight: '5px' }} />
-//       </a>
-//       <h2>Villa Pet</h2>
-//     </div>
-//   </>
-// );
 
 export default Header;
